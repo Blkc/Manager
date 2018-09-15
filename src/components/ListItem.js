@@ -10,30 +10,28 @@ class ListItem extends Component {
     }
 
     renderDescription() {
-        const { library, expanded } = this.props;
+        const { library } = this.props;
 
-        if (expanded) {
-            return (
-                <CardSection>
-                    <Text style={{ flex: 1 }}>
-                        {library.description}
-                    </Text>
-                </CardSection>
-            );
-        }
+        return (
+            <CardSection>
+                <Text style={{ flex: 1 }}>
+                    {library.item.description}
+                </Text>
+            </CardSection>
+        );
     }
 
     render() {
         const { titleStyle } = styles;
-        const { id, title } = this.props.library;
+        const { item } = this.props.library;
         
         return (
-            <TouchableWithoutFeedback onPress={() => this.props.selectLibrary(id)}>
+            <TouchableWithoutFeedback onPress={() => this.props.selectLibrary(item.id)}>
                 <View>
                     <CardSection>
-                        <Text style={titleStyle}>{title}</Text>
+                        <Text style={titleStyle}>{item.title}</Text>
                     </CardSection>
-                    {this.renderDescription}
+                    {this.props.expanded ? this.renderDescription() : null}
                 </View>
             </TouchableWithoutFeedback>
         );
@@ -48,8 +46,8 @@ const styles = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-    const expanded = state.selctedLibraryId === ownProps.library.id;
-
+    const expanded = state.selectedLibraryId === ownProps.library.item.id;
+    
     return { expanded };
 };
 
