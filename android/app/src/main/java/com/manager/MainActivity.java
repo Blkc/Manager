@@ -1,4 +1,4 @@
-package com.tech_stack;
+package com.manager;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "tech_stack";
+        return "manager";
     }
 }

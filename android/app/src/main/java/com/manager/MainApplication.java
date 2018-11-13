@@ -1,4 +1,4 @@
-package com.tech_stack;
+package com.manager;
 
 import android.app.Application;
 
